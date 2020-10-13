@@ -110,10 +110,12 @@ def _step(config, data_batch, training_nn):
 
 
 def main(argv=None):
+  tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
   # Configurations
-  config = Config(gpu='1',
-                  root_dir='./data/train/',
-                  root_dir_val='./data/val/',
+  config = Config(gpu='3',
+                  root_dir='/home/t-yualee/data/oulu_npu/landmarks/cropped/train/',
+                  root_dir_val='/home/t-yualee/data/oulu_npu/landmarks/cropped/val/',
                   mode='training')
 
   # Create data feeding pipeline.
