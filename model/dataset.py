@@ -102,13 +102,13 @@ class Dataset():
         def _parse_function(_file1, _file2):
             # live
             _file1 = _file1.decode('UTF-8')
-            meta = glob.glob(_file1+'/*.png')
+            meta = glob.glob(_file1+'/*.npy')
             try:
                 fr = meta[random.randint(0, len(meta) - 1)]
             except:
                 print(_file1, len(meta))
-            im_name = fr
-            lm_name = fr[:-3] + 'npy'
+            lm_name = fr
+            im_name = (fr[:-3] + 'png').replace('landmarks', 'sample_processed').replace('/live', '')
             image = Image.open(im_name)
             width, height = image.size
             image_li = image.resize((imsize,imsize))
@@ -121,13 +121,13 @@ class Dataset():
 
             # spoof
             _file2 = _file2.decode('UTF-8')
-            meta = glob.glob(_file2+'/*.png')
+            meta = glob.glob(_file2+'/*.npy')
             try:
                 fr = meta[random.randint(0, len(meta) - 1)]
             except:
                 print(_file2, len(meta))
-            im_name = fr
-            lm_name = fr[:-3] + 'npy'
+            lm_name = fr
+            im_name = (fr[:-3] + 'png').replace('landmarks', 'sample_processed').replace('/spoof', '')
             image = Image.open(im_name)
             width, height = image.size
             image_sp = image.resize((imsize,imsize))
@@ -164,14 +164,14 @@ class Dataset():
         def _parse_function(_file1, _file2):
             # live
             _file1 = _file1.decode('UTF-8')
-            meta = glob.glob(_file1+'/*.png')
+            meta = glob.glob(_file1+'/*.npy')
             try:
                 fr = meta[random.randint(0, len(meta) - 1)]
             except:
                 print(_file1, len(meta))
                 input()
-            im_name = fr
-            lm_name = fr[:-3] + 'npy'
+            lm_name = fr
+            im_name = (fr[:-3] + 'png').replace('landmarks', 'sample_processed').replace('/live', '')
             image = Image.open(im_name)
             width, height = image.size
             image_li = image.resize((imsize,imsize))
@@ -184,14 +184,14 @@ class Dataset():
 
             # spoof
             _file2 = _file2.decode('UTF-8')
-            meta = glob.glob(_file2+'/*.png')
+            meta = glob.glob(_file2+'/*.npy')
             try:
                 fr = meta[random.randint(0, len(meta) - 1)]
             except:
                 print(_file2, len(meta))
                 input()
-            im_name = fr
-            lm_name = fr[:-3] + 'npy'
+            lm_name = fr
+            im_name = (fr[:-3] + 'png').replace('landmarks', 'sample_processed').replace('/spoof', '')
             image = Image.open(im_name)
             width, height = image.size
             image_sp = image.resize((imsize,imsize))
